@@ -1,0 +1,98 @@
+name: Building Package for Release
+on: 
+  - pull_request
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write  
+  checks: write
+jobs:
+  check-version:
+    name: Check Tag Version
+    runs-on: ubuntu-latest       
+    outputs:
+      tag_v_major: ${{ steps.semvers.outputs.v_major }}
+      tag_v_minor: ${{ steps.semvers.outputs.v_minor }}
+      tag_v_patch: ${{ steps.semvers.outputs.v_patch }}
+    steps:
+    - uses: actions/checkout@v3  
+      with:
+        fetch-depth: 0 
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      env:
+        GITHUB_TOKEN: ${{ github.TOKEN }}
+      with:
+        fallback: 0.0.0
+        prefix: v
+    - name: 'Get next version'
+      id: semvers
+      uses: "WyriHaximus/github-action-next-semvers@v1"
+      with:
+        version: ${{ steps.previoustag.outputs.tag }}
+  build-package:
+    name: Build Package
+    runs-on: ubuntu-latest 
+    needs:
+      - check-version
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Checking Minor version
+      if: contains(github.event.pull_request.labels.*.name, 'feat')
+      shell: pwsh
+      run: |
+        $tag = "${{ needs.check-version.outputs.tag_v_minor }}"
+        echo "tag=$($tag)" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+    - name: Checking Major version
+      if: contains(github.event.pull_request.labels.*.name, 'BREAKING CHANGE')
+      shell: pwsh
+      run: |
+        $tag = "${{ needs.check-version.outputs.tag_v_major }}"
+        echo "tag=$($tag)" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+    - name: Checking Patch version
+      if: contains(github.event.pull_request.labels.*.name, 'fix')
+      shell: pwsh
+      run: |
+        $tag = "${{ needs.check-version.outputs.tag_v_patch }}"
+        echo "tag=$($tag)" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+
+    - name: 🚧　Install Yarn
+      run: yarn install
+
+    - name: 📦　Build Yarn
+      run: yarn build
+
+    - name: Commit Package to branch
+      if: ${{ !contains(github.event.pull_request.labels.*.name, 'docs') || !contains(github.event.pull_request.labels.*.name, 'refactor') || !contains(github.event.pull_request.labels.*.name, 'chore')}}
+      env:
+        CI_USER: "github-actions"
+        CI_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+        CI_TOKEN: ${{ secrets.TOKEN }}
+      run: |
+        git config --local user.email "$CI_EMAIL"
+        git config --local user.name "$CI_USER"
+        git add . && git commit -m 'Bulding Package for Release ${{ env.tag }}' || echo "No changes to package."
+        git push "https://$CI_USER:$CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" ${{ github.event.pull_request.head.ref }}
+  nothing-to-release:
+    name: No version to update
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'feat') || !contains(github.event.pull_request.labels.*.name, 'BREAKING CHANGE') || !contains(github.event.pull_request.labels.*.name, 'fix')}}
+    needs:
+      - check-version
+      - build-package
+    steps:
+    - name: Changes related to docs
+      if: contains(github.event.pull_request.labels.*.name, 'docs') 
+      shell: bash
+      run:  echo "There were changes releted to 'documentation' so nothing to build & commit."
+    - name: Changes related to refactoring
+      if: contains(github.event.pull_request.labels.*.name, 'refactor') 
+      shell: bash
+      run:  echo "There was some refactor of the code so nothing to build & commit."
+    - name: Changes related to docs
+      if: contains(github.event.pull_request.labels.*.name, 'chore') 
+      shell: bash
+      run:  echo "Some tools or other stuff were added so nothing to build & commit."
