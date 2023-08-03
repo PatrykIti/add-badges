@@ -1,12 +1,17 @@
 {
   "name": "add-badges",
   "description": "Automatically add badges to README.md for your repository",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
     "dist",
     "action.yml"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatrykIti/add-badges.git",
+    "url": "git+https://github.com/PatrykIti/add-badges.git"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint 'src/**/*.{js,ts}?(x)' --fix",
@@ -45,7 +50,7 @@
     "@types/node": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
-    "@vercel/ncc": "^0.31.1",
+    "@vercel/ncc": "^0.36.1",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
