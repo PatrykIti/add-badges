@@ -1,12 +1,12 @@
 <h1 align="center">This repo is forked from <a href="https://github.com/wow-actions/add-badges">wow-actions/add-badges</a></h1>
-<p align="center">The changes made to the code:<br />
+<p>The changes made to the code:<br />
   <ol>
     <li>Added 'ref' parameter to choose branch where badges will be commited</Li>
     <li>Changing workflows for building packages, tagging and release because previous one were not working</li>
   </ol>
 </p>
 
-<p>You can find below the original README.md content</p>
+<p align="center">You can find below the original README.md content</p>
 
 <h1 align="center">Add Badges</h1>
 <p align="center">
