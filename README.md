@@ -6,8 +6,6 @@
   </ol>
 </p>
 
-<p align="center">You can find below the original README.md content</p>
-
 <h1 align="center">Add Badges</h1>
 <p align="center">
     Automatically add badges on <a href="https://shields.io">shield.io</a> to <code>README.md</code> for your repository
@@ -19,9 +17,7 @@
   <a href="https://github.com/PatrykIti/add-badges/blob/master/LICENSE"><img src="https://img.shields.io/github/license/PatrykIti/add-badges?style=flat-square" alt="MIT License" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square" alt="Language" /></a>
   <a href="https://github.com/PatrykIti/add-badges/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" /></a>
-  <a href="https://github.com/marketplace/actions/add-badges"><img src="https://img.shields.io/static/v1?label=&labelColor=505050&message=marketplace&color=0076D6&style=flat-square&logo=google-chrome&logoColor=0076D6" alt="website" /></a>
   <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square" alt="build" /></a>
-  <a href="https://lgtm.com/projects/g/PatrykIti/add-badges/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/g/PatrykIti/add-badges.svg?logo=lgtm&style=flat-square" alt="Language grade: JavaScript" /></a>
 </p>
 <!-- [END BADGES] -->
 
@@ -41,9 +37,7 @@
 [![MIT License](https://img.shields.io/github/license/PatrykIti/add-badges?style=flat-square)](https://github.com/PatrykIti/add-badges/blob/master/LICENSE)
 [![Language](https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square)](https://www.typescriptlang.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://github.com/PatrykIti/add-badges/pulls)
-[![website](https://img.shields.io/static/v1?label=&labelColor=505050&message=marketplace&color=0076D6&style=flat-square&logo=google-chrome&logoColor=0076D6)](https://github.com/marketplace/actions/add-badges)
 [![build](https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square)](https://github.com/PatrykIti/add-badges/actions/workflows/release.yml)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/PatrykIti/add-badges.svg?logo=lgtm&style=flat-square)](https://lgtm.com/projects/g/PatrykIti/add-badges/context:javascript)
 <!-- [END BADGES 1] -->
 
 ```yml
@@ -56,7 +50,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: wow-actions/add-badges@v1
+      - uses: PatrykIti/add-badges@v1
         env:
           repo_url: ${{ github.event.repository.html_url }}
           repo_name: ${{ github.event.repository.name }}
@@ -81,19 +75,9 @@ jobs:
                 "link": "${{ env.repo_url }}/pulls"
               },
               {
-                "badge": "https://img.shields.io/static/v1?label=&labelColor=505050&message=marketplace&color=0076D6&style=flat-square&logo=google-chrome&logoColor=0076D6",
-                "alt": "website",
-                "link": "https://github.com/marketplace/actions/${{ env.repo_name }}"
-              },
-              {
                 "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release/master?logo=github&style=flat-square",
                 "alt": "build",
                 "link": "${{ env.repo_url }}/actions/workflows/release.yml"
-              },
-              {
-                "badge": "https://img.shields.io/lgtm/grade/javascript/g/${{ env.repo_owner }}/${{ env.repo_name }}.svg?logo=lgtm&style=flat-square",
-                "alt": "Language grade: JavaScript",
-                "link": "https://lgtm.com/projects/g/${{ env.repo_owner }}/${{ env.repo_name }}/context:javascript"
               }
             ]
 ```
@@ -106,12 +90,10 @@ We also can add multi-line badges with nested array.
   <a href="https://github.com/PatrykIti/add-badges/blob/master/LICENSE"><img src="https://img.shields.io/github/license/PatrykIti/add-badges?style=flat-square" alt="MIT License" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square" alt="Language" /></a>
   <a href="https://github.com/PatrykIti/add-badges/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" /></a>
-  <a href="https://github.com/marketplace/actions/add-badges"><img src="https://img.shields.io/static/v1?label=&labelColor=505050&message=marketplace&color=0076D6&style=flat-square&logo=google-chrome&logoColor=0076D6" alt="website" /></a>
 </p>
 
 <p align="center">
   <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square" alt="build" /></a>
-  <a href="https://lgtm.com/projects/g/PatrykIti/add-badges/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/g/PatrykIti/add-badges.svg?logo=lgtm&style=flat-square" alt="Language grade: JavaScript" /></a>
 </p>
 <!-- [END BADGES 2] -->
 
@@ -125,13 +107,14 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: wow-actions/add-badges@v1
+      - uses: PatrykIti/add-badges@v1
         env:
           repo_url: ${{ github.event.repository.html_url }}
           repo_name: ${{ github.event.repository.name }}
           repo_owner: ${{ github.event.repository.owner.login }}
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
           center: true
           badges: |
             [
@@ -150,11 +133,6 @@ jobs:
                   "badge": "https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square",
                   "alt": "PRs Welcome",
                   "link": "${{ env.repo_url }}/pulls"
-                },
-                {
-                  "badge": "https://img.shields.io/static/v1?label=&labelColor=505050&message=marketplace&color=0076D6&style=flat-square&logo=google-chrome&logoColor=0076D6",
-                  "alt": "website",
-                  "link": "https://github.com/marketplace/actions/${{ env.repo_name }}"
                 }
               ],
               [
@@ -162,11 +140,6 @@ jobs:
                   "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release/master?logo=github&style=flat-square",
                   "alt": "build",
                   "link": "${{ env.repo_url }}/actions/workflows/release.yml"
-                },
-                {
-                  "badge": "https://img.shields.io/lgtm/grade/javascript/g/${{ env.repo_owner }}/${{ env.repo_name }}.svg?logo=lgtm&style=flat-square",
-                  "alt": "Language grade: JavaScript",
-                  "link": "https://lgtm.com/projects/g/${{ env.repo_owner }}/${{ env.repo_name }}/context:javascript"
                 }
               ]
             ]
