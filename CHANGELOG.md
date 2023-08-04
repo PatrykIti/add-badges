@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/PatrykIti/add-badges/tree/HEAD)
+
+[Full Changelog](https://github.com/PatrykIti/add-badges/compare/v1.0.0...HEAD)
+
+**Merged pull requests:**
+
+- Refactor: Small refactor to badges example [\#2](https://github.com/PatrykIti/add-badges/pull/2) ([PatrykIti](https://github.com/PatrykIti))
+
 ## [v1.0.0](https://github.com/PatrykIti/add-badges/tree/v1.0.0) (2023-08-03)
 
 [Full Changelog](https://github.com/PatrykIti/add-badges/compare/4cca656439a692c75f9c0b42912b0dd0544d21d6...v1.0.0)
