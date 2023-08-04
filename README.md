@@ -17,7 +17,7 @@
   <a href="https://github.com/PatrykIti/add-badges/blob/master/LICENSE"><img src="https://img.shields.io/github/license/PatrykIti/add-badges?style=flat-square" alt="MIT License" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square" alt="Language" /></a>
   <a href="https://github.com/PatrykIti/add-badges/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" /></a>
-  <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square" alt="build" /></a>
+  <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?logo=github&style=flat-square" alt="build" /></a>
 </p>
 <!-- [END BADGES] -->
 
@@ -37,7 +37,7 @@
 [![MIT License](https://img.shields.io/github/license/PatrykIti/add-badges?style=flat-square)](https://github.com/PatrykIti/add-badges/blob/master/LICENSE)
 [![Language](https://img.shields.io/badge/language-TypeScript-blue.svg?style=flat-square)](https://www.typescriptlang.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://github.com/PatrykIti/add-badges/pulls)
-[![build](https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square)](https://github.com/PatrykIti/add-badges/actions/workflows/release.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?logo=github&style=flat-square)](https://github.com/PatrykIti/add-badges/actions/workflows/release.yml)
 <!-- [END BADGES 1] -->
 
 ```yml
@@ -75,7 +75,7 @@ jobs:
                 "link": "${{ env.repo_url }}/pulls"
               },
               {
-                "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release/master?logo=github&style=flat-square",
+                "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release?logo=github&style=flat-square",
                 "alt": "build",
                 "link": "${{ env.repo_url }}/actions/workflows/release.yml"
               }
@@ -93,7 +93,7 @@ We also can add multi-line badges with nested array.
 </p>
 
 <p align="center">
-  <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?branch=master&logo=github&style=flat-square" alt="build" /></a>
+  <a href="https://github.com/PatrykIti/add-badges/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/PatrykIti/add-badges/release.yml?logo=github&style=flat-square" alt="build" /></a>
 </p>
 <!-- [END BADGES 2] -->
 
@@ -137,7 +137,7 @@ jobs:
               ],
               [
                 {
-                  "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release/master?logo=github&style=flat-square",
+                  "badge": "https://img.shields.io/github/workflow/status/${{ env.repo_owner }}/${{ env.repo_name }}/Release?logo=github&style=flat-square",
                   "alt": "build",
                   "link": "${{ env.repo_url }}/actions/workflows/release.yml"
                 }
